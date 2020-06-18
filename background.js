@@ -7,6 +7,7 @@ chrome.tabs.onUpdated.addListener(function handleUpdated(tabId, changeInfo, tabI
             chrome.tabs.sendMessage(tabId, { action: "removeHomeRecommendations" })
         }
         else if (tabInfo.url.indexOf("https://www.youtube.com/") !== -1) {
+            console.log('remove related');
             chrome.tabs.sendMessage(tabId, { action: "removeRelatedRecommendations" })
         }
     }
