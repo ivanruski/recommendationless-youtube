@@ -18,15 +18,8 @@ function removeHomePageRecommendations() {
 function removeRelatedRecommendations() {
     let secondary = document.getElementById('secondary');
     
-    if (secondary && secondary.children && secondary.children.toString() === '[object HTMLCollection]') {
-        let secondaryInner = secondary.children[0];
-        if(!secondaryInner) {
-            return;
-        }
-        console.log('si', secondaryInner);
-        if (secondaryInner) {
-            secondaryInner.parentNode.removeChild(secondaryInner);
-        }
+    if (secondary) {
+        secondary.parentNode.removeChild(secondary);
     }
 }
 
@@ -35,9 +28,11 @@ chrome
     .onMessage
     .addListener(function (message, sender) {
         console.log(message);
-        if (message.action === "removeHomeRecommendations")
+        if (message.action === "removeHomeRecommendations") {
             removeHomePageRecommendations();
+        }
         
-        if (message.action === "removeRelatedRecommendations")
+        if (message.action === "removeRelatedRecommendations") {
             removeRelatedRecommendations();    
+        }
     });
