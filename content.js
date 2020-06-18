@@ -27,7 +27,6 @@ chrome
     .runtime
     .onMessage
     .addListener(function (message, sender) {
-        console.log(message);
         if (message.action === "removeHomeRecommendations") {
             removeHomePageRecommendations();
         }
